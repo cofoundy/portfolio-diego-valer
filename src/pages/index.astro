@@ -9,7 +9,7 @@ const base = import.meta.env.BASE_URL;
 <html lang="en" style={`--color-primary-dark:${c.primaryDark};--color-primary:${c.primary};--color-primary-light:${c.primaryLight};--color-accent:${c.accent};--color-surface:${c.surface};--color-surface-light:${c.surfaceLight}`}>
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={siteConfig.description} />
@@ -46,7 +46,7 @@ const base = import.meta.env.BASE_URL;
             <div class="hero-photo flex-shrink-0">
               <div class="relative">
                 <div class="photo-ring w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full p-1" style={`background: linear-gradient(135deg, ${c.accent}, ${c.primaryLight}, ${c.accent});`}>
-                  <img src={`${base}profile.jpg`} alt={siteConfig.name} class="w-full h-full rounded-full object-cover object-top" />
+                  <img src={`${base}/profile.jpg`} alt={siteConfig.name} class="w-full h-full rounded-full object-cover object-top" />
                 </div>
                 <div class="absolute -bottom-2 -right-2 px-3 py-1 rounded-full text-xs font-accent font-semibold" style={`background: ${c.accent}; color: ${c.primaryDark};`}>
                   🇵🇪 → 🇩🇪
