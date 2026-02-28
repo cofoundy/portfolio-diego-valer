@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from "../config";
+import { translations } from "../i18n";
 import "../styles/global.css";
 
 const c = siteConfig.colors;
@@ -25,16 +26,24 @@ const base = import.meta.env.BASE_URL;
     <title>{siteConfig.shortName} | {siteConfig.title}</title>
   </head>
   <body>
+    <!-- ═══════════ LANGUAGE TOGGLE (Fixed) ═══════════ -->
+    <button id="lang-toggle" type="button" class="fixed top-4 right-4 z-[60] flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-accent font-semibold cursor-pointer transition-all duration-300 hover:scale-105" style={`background: ${c.primaryDark}ee; border-color: ${c.accent}44; color: ${c.accent}; backdrop-filter: blur(12px);`}>
+      <span id="lang-flag">🇬🇧</span>
+      <span id="lang-label">EN</span>
+      <span style={`color: ${c.surfaceLight}44;`}>|</span>
+      <span id="lang-alt" style={`color: ${c.surfaceLight}66;`}>DE</span>
+    </button>
+
     <!-- ═══════════ FLOATING HEADER ═══════════ -->
     <header id="floating-header" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 hidden">
       <nav class="flex items-center gap-6 px-6 py-3 rounded-full border border-white/10" style={`background: ${c.primaryDark}ee; backdrop-filter: blur(12px);`}>
         <span class="font-accent text-sm font-semibold tracking-wide" style={`color: ${c.accent}`}>DV</span>
-        <a href="#about" class="text-xs text-white/60 hover:text-white transition-colors">About</a>
-        <a href="#education" class="text-xs text-white/60 hover:text-white transition-colors">Education</a>
-        <a href="#leadership" class="text-xs text-white/60 hover:text-white transition-colors">Leadership</a>
-        <a href="#projects" class="text-xs text-white/60 hover:text-white transition-colors">Projects</a>
-        <a href="#skills" class="text-xs text-white/60 hover:text-white transition-colors">Skills</a>
-        <a href="#contact" class="text-xs text-white/60 hover:text-white transition-colors">Contact</a>
+        <a href="#about" class="text-xs text-white/60 hover:text-white transition-colors" data-i18n="nav.about">About</a>
+        <a href="#education" class="text-xs text-white/60 hover:text-white transition-colors" data-i18n="nav.education">Education</a>
+        <a href="#leadership" class="text-xs text-white/60 hover:text-white transition-colors" data-i18n="nav.leadership">Leadership</a>
+        <a href="#projects" class="text-xs text-white/60 hover:text-white transition-colors" data-i18n="nav.projects">Projects</a>
+        <a href="#skills" class="text-xs text-white/60 hover:text-white transition-colors" data-i18n="nav.skills">Skills</a>
+        <a href="#contact" class="text-xs text-white/60 hover:text-white transition-colors" data-i18n="nav.contact">Contact</a>
       </nav>
     </header>
 
@@ -64,13 +73,13 @@ const base = import.meta.env.BASE_URL;
             <div class="flex-1 text-center lg:text-left">
               <!-- Title block (top) -->
               <div class="hero-title">
-                <p class="font-accent text-sm tracking-[0.2em] uppercase mb-4" style={`color: ${c.accent};`}>{siteConfig.title}</p>
+                <p class="font-accent text-sm tracking-[0.2em] uppercase mb-4" style={`color: ${c.accent};`} data-i18n="hero.title">Business Student & Emerging Leader</p>
                 <h1 class="hero-name text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold leading-tight" style={`color: ${c.surfaceLight};`}>
                   {siteConfig.name.split(' ').slice(0, 2).join(' ')}<br />
                   <span style={`color: ${c.accent};`}>{siteConfig.name.split(' ').slice(2).join(' ')}</span>
                 </h1>
-                <p class="hero-tagline mt-4 text-lg font-light leading-relaxed" style={`color: ${c.surfaceLight}aa;`}>
-                  {siteConfig.tagline}
+                <p class="hero-tagline mt-4 text-lg font-light leading-relaxed" style={`color: ${c.surfaceLight}aa;`} data-i18n="hero.tagline">
+                  From Lima to Bremen — Building bridges between continents and opportunities.
                 </p>
               </div>
 
@@ -78,7 +87,7 @@ const base = import.meta.env.BASE_URL;
               <div class="hero-stats mt-8 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
                 <!-- Contact column -->
                 <div class="rounded-2xl p-5 border" style={`background: ${c.primary}44; border-color: ${c.primaryLight}44;`}>
-                  <h3 class="font-accent text-xs uppercase tracking-wide mb-4" style={`color: ${c.accent};`}>Contact</h3>
+                  <h3 class="font-accent text-xs uppercase tracking-wide mb-4" style={`color: ${c.accent};`} data-i18n="hero.contact">Contact</h3>
                   <div class="flex flex-col gap-3">
                     <a href={`mailto:${siteConfig.social.email}`} class="inline-flex items-center gap-3 group lg:justify-start justify-center" style={`color: ${c.surfaceLight}cc;`}>
                       <span class="flex items-center justify-center w-9 h-9 rounded-full border flex-shrink-0" style={`border-color: ${c.primaryLight}; background: ${c.primary};`}>
@@ -102,19 +111,19 @@ const base = import.meta.env.BASE_URL;
                       <span class="flex items-center justify-center w-9 h-9 rounded-full border flex-shrink-0" style={`border-color: ${c.primaryLight}; background: ${c.primary};`}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style={`color: ${c.accent};`}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                       </span>
-                      <span class="text-sm">Bremen, Germany</span>
+                      <span class="text-sm" data-i18n="hero.location">Bremen, Germany</span>
                     </p>
                   </div>
                 </div>
 
                 <!-- Stats column -->
                 <div class="rounded-2xl p-5 border" style={`background: ${c.primary}44; border-color: ${c.primaryLight}44;`}>
-                  <h3 class="font-accent text-xs uppercase tracking-wide mb-4" style={`color: ${c.accent};`}>At a Glance</h3>
+                  <h3 class="font-accent text-xs uppercase tracking-wide mb-4" style={`color: ${c.accent};`} data-i18n="hero.glance">At a Glance</h3>
                   <div class="grid grid-cols-2 gap-5">
-                    {siteConfig.stats.map((stat) => (
+                    {siteConfig.stats.map((stat, i) => (
                       <div>
                         <div class="font-accent text-3xl font-bold" style={`color: ${c.accent};`}>{stat.value}</div>
-                        <div class="text-xs mt-1 uppercase tracking-wide" style={`color: ${c.surfaceLight}77;`}>{stat.label}</div>
+                        <div class="text-xs mt-1 uppercase tracking-wide" style={`color: ${c.surfaceLight}77;`} data-i18n={`stat.${["countries","languages","students","english"][i]}`}>{stat.label}</div>
                       </div>
                     ))}
                   </div>
@@ -124,10 +133,10 @@ const base = import.meta.env.BASE_URL;
               <!-- CTA -->
               <div class="hero-cta flex flex-wrap gap-4 mt-8 lg:justify-start justify-center">
                 <a href="#leadership" class="btn-hover inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold" style={`background: ${c.accent}; color: ${c.primaryDark};`}>
-                  View My Journey
+                  <span data-i18n="hero.cta.journey">View My Journey</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
                 </a>
-                <a href="#contact" class="btn-hover inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold border" style={`border-color: ${c.accent}44; color: ${c.accent};`}>
+                <a href="#contact" class="btn-hover inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold border" style={`border-color: ${c.accent}44; color: ${c.accent};`} data-i18n="hero.cta.contact">
                   Contact Me
                 </a>
               </div>
@@ -139,18 +148,18 @@ const base = import.meta.env.BASE_URL;
       <!-- Shimmer separator -->
       <div class="bar-shimmer h-px w-full"></div>
 
-      <!-- ═══════════ ABOUT — "From Lima to Bremen" ═══════════ -->
+      <!-- ═══════════ ABOUT — "De Lima a Bremen" ═══════════ -->
       <section id="about" class="py-20 md:py-28 px-6 sm:px-12 md:px-16 lg:px-24" style={`background: ${c.surface};`}>
         <div class="max-w-4xl mx-auto">
           <div class="reveal">
-            <p class="font-accent text-sm tracking-[0.2em] uppercase mb-3" style={`color: ${c.accent};`}>About Me</p>
-            <h2 class="text-3xl sm:text-4xl font-bold mb-8" style={`color: ${c.surfaceLight};`}>From Lima to the World</h2>
+            <p class="font-accent text-sm tracking-[0.2em] uppercase mb-3" style={`color: ${c.accent};`} data-i18n="about.label">About Me</p>
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8" style={`color: ${c.surfaceLight};`} data-i18n="about.title">From Lima to Bremen</h2>
           </div>
 
           <div class="reveal stagger-1 space-y-5 text-base sm:text-lg leading-relaxed" style={`color: ${c.surfaceLight}cc;`}>
-            <p>{siteConfig.about.intro}</p>
-            <p>{siteConfig.about.body}</p>
-            <p class="font-medium" style={`color: ${c.accent};`}>{siteConfig.about.closing}</p>
+            <p data-i18n="about.intro">{siteConfig.about.intro}</p>
+            <p data-i18n="about.body">{siteConfig.about.body}</p>
+            <p class="font-medium" style={`color: ${c.accent};`} data-i18n="about.closing">{siteConfig.about.closing}</p>
           </div>
 
           <!-- Journey Timeline -->
@@ -169,7 +178,7 @@ const base = import.meta.env.BASE_URL;
                     <div class="text-2xl mb-1">{stop.flag}</div>
                     <div class="font-accent text-sm font-bold" style={`color: ${c.accent};`}>{stop.year}</div>
                     <div class="text-xs mt-1" style={`color: ${c.surfaceLight}88;`}>{stop.place}</div>
-                    <div class="text-xs mt-1 font-medium" style={`color: ${c.surfaceLight}cc;`}>{stop.event}</div>
+                    <div class="text-xs mt-1 font-medium" style={`color: ${c.surfaceLight}cc;`} data-i18n={`journey.${i}.event`}>{stop.event}</div>
                   </div>
                 ))}
               </div>
@@ -184,8 +193,8 @@ const base = import.meta.env.BASE_URL;
       <section id="education" class="py-20 md:py-28 px-6 sm:px-12 md:px-16 lg:px-24" style={`background: ${c.primaryDark};`}>
         <div class="max-w-5xl mx-auto">
           <div class="reveal">
-            <p class="font-accent text-sm tracking-[0.2em] uppercase mb-3" style={`color: ${c.accent};`}>Academic Journey</p>
-            <h2 class="text-3xl sm:text-4xl font-bold mb-12" style={`color: ${c.surfaceLight};`}>Education</h2>
+            <p class="font-accent text-sm tracking-[0.2em] uppercase mb-3" style={`color: ${c.accent};`} data-i18n="edu.label">Academic Path</p>
+            <h2 class="text-3xl sm:text-4xl font-bold mb-12" style={`color: ${c.surfaceLight};`} data-i18n="edu.title">Education</h2>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -201,8 +210,8 @@ const base = import.meta.env.BASE_URL;
                   </div>
                   <span class="font-accent text-xs px-3 py-1 rounded-full whitespace-nowrap" style={`background: ${c.accent}15; color: ${c.accent};`}>{edu.dateRange}</span>
                 </div>
-                <p class="text-base font-semibold mb-2" style={`color: ${c.surfaceLight}dd;`}>{edu.degree}</p>
-                <p class="text-sm mb-3" style={`color: ${c.surfaceLight}88;`}>{edu.gpa}</p>
+                <p class="text-base font-semibold mb-2" style={`color: ${c.surfaceLight}dd;`} data-i18n={`edu.${i}.degree`}>{edu.degree}</p>
+                <p class="text-sm mb-3" style={`color: ${c.surfaceLight}88;`} data-i18n={i === 1 ? "edu.1.gpa" : undefined}>{edu.gpa}</p>
                 <div class="flex flex-wrap gap-2 mb-4">
                   {edu.coursework.map((course) => (
                     <span class="skill-hover text-xs px-3 py-1 rounded-full" style={`background: ${c.primaryLight}; color: ${c.surfaceLight}aa;`}>{course}</span>
@@ -227,9 +236,9 @@ const base = import.meta.env.BASE_URL;
       <section id="leadership" class="py-20 md:py-28 px-6 sm:px-12 md:px-16 lg:px-24" style={`background: ${c.surface};`}>
         <div class="max-w-5xl mx-auto">
           <div class="reveal">
-            <p class="font-accent text-sm tracking-[0.2em] uppercase mb-3" style={`color: ${c.accent};`}>Impact & Leadership</p>
-            <h2 class="text-3xl sm:text-4xl font-bold mb-4" style={`color: ${c.surfaceLight};`}>What I've Built</h2>
-            <p class="text-sm mb-12" style={`color: ${c.surfaceLight}66;`}>Click on any activity to see more details and photos</p>
+            <p class="font-accent text-sm tracking-[0.2em] uppercase mb-3" style={`color: ${c.accent};`} data-i18n="lead.label">Impact & Leadership</p>
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4" style={`color: ${c.surfaceLight};`} data-i18n="lead.title">What I've Built</h2>
+            <p class="text-sm mb-12" style={`color: ${c.surfaceLight}66;`} data-i18n="lead.subtitle">Click any activity to see more details and photos</p>
           </div>
 
           <div class="space-y-5">
@@ -248,15 +257,15 @@ const base = import.meta.env.BASE_URL;
                 <!-- Content -->
                 <div class="flex-1">
                   <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
-                    <h3 class="text-lg font-bold" style={`color: ${c.surfaceLight};`}>{item.title}</h3>
+                    <h3 class="text-lg font-bold" style={`color: ${c.surfaceLight};`} data-i18n={`lead.${i}.title`}>{item.title}</h3>
                     <span class="font-accent text-xs px-3 py-1 rounded-full whitespace-nowrap self-start" style={`background: ${c.accent}15; color: ${c.accent};`}>{item.period}</span>
                   </div>
-                  <p class="text-sm font-medium mb-2" style={`color: ${c.accent};`}>{item.role} — {item.org}</p>
-                  <p class="text-sm leading-relaxed" style={`color: ${c.surfaceLight}aa;`}>{item.description}</p>
+                  <p class="text-sm font-medium mb-2" style={`color: ${c.accent};`}><span data-i18n={`lead.${i}.role`}>{item.role}</span> — {item.org}</p>
+                  <p class="text-sm leading-relaxed" style={`color: ${c.surfaceLight}aa;`} data-i18n={`lead.${i}.desc`}>{item.description}</p>
                   {item.images && item.images.length > 0 && (
                     <div class="flex items-center gap-1 mt-3" style={`color: ${c.accent}88;`}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
-                      <span class="text-xs">{item.images.length} photos</span>
+                      <span class="text-xs">{item.images.length} <span data-i18n="modal.photos">photos</span></span>
                     </div>
                   )}
                 </div>
@@ -298,19 +307,19 @@ const base = import.meta.env.BASE_URL;
 
             <!-- Description -->
             <div class="mb-6">
-              <h4 class="font-accent text-xs uppercase tracking-wide mb-3" style={`color: ${c.accent};`}>About This Experience</h4>
+              <h4 class="font-accent text-xs uppercase tracking-wide mb-3" style={`color: ${c.accent};`} data-i18n="modal.about">About This Experience</h4>
               <p id="modal-details" class="text-sm leading-relaxed" style={`color: ${c.surfaceLight}cc;`}></p>
             </div>
 
             <!-- Skills -->
             <div class="mb-6">
-              <h4 class="font-accent text-xs uppercase tracking-wide mb-3" style={`color: ${c.accent};`}>Skills Developed</h4>
+              <h4 class="font-accent text-xs uppercase tracking-wide mb-3" style={`color: ${c.accent};`} data-i18n="modal.skills">Skills Developed</h4>
               <div id="modal-skills" class="flex flex-wrap gap-2"></div>
             </div>
 
             <!-- Photo gallery -->
             <div id="modal-gallery" class="hidden">
-              <h4 class="font-accent text-xs uppercase tracking-wide mb-3" style={`color: ${c.accent};`}>Gallery</h4>
+              <h4 class="font-accent text-xs uppercase tracking-wide mb-3" style={`color: ${c.accent};`} data-i18n="modal.gallery">Gallery</h4>
               <div id="modal-gallery-grid" class="grid grid-cols-2 gap-3"></div>
             </div>
           </div>
@@ -323,8 +332,8 @@ const base = import.meta.env.BASE_URL;
       <section id="projects" class="py-20 md:py-28 px-6 sm:px-12 md:px-16 lg:px-24" style={`background: ${c.primaryDark};`}>
         <div class="max-w-5xl mx-auto">
           <div class="reveal">
-            <p class="font-accent text-sm tracking-[0.2em] uppercase mb-3" style={`color: ${c.accent};`}>Academic Work</p>
-            <h2 class="text-3xl sm:text-4xl font-bold mb-12" style={`color: ${c.surfaceLight};`}>Projects</h2>
+            <p class="font-accent text-sm tracking-[0.2em] uppercase mb-3" style={`color: ${c.accent};`} data-i18n="proj.label">Academic Work</p>
+            <h2 class="text-3xl sm:text-4xl font-bold mb-12" style={`color: ${c.surfaceLight};`} data-i18n="proj.title">Projects</h2>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -340,7 +349,7 @@ const base = import.meta.env.BASE_URL;
                 </div>
                 <a href={`${base}/${project.file}`} target="_blank" rel="noopener noreferrer" class="btn-hover inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border mt-2" style={`border-color: ${c.accent}44; color: ${c.accent};`}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  Download PDF
+                  <span data-i18n="proj.download">Download PDF</span>
                 </a>
               </div>
             ))}
@@ -354,14 +363,14 @@ const base = import.meta.env.BASE_URL;
       <section id="skills" class="py-20 md:py-28 px-6 sm:px-12 md:px-16 lg:px-24" style={`background: ${c.surface};`}>
         <div class="max-w-5xl mx-auto">
           <div class="reveal">
-            <p class="font-accent text-sm tracking-[0.2em] uppercase mb-3" style={`color: ${c.accent};`}>Capabilities</p>
-            <h2 class="text-3xl sm:text-4xl font-bold mb-12" style={`color: ${c.surfaceLight};`}>Toolkit</h2>
+            <p class="font-accent text-sm tracking-[0.2em] uppercase mb-3" style={`color: ${c.accent};`} data-i18n="skills.label">Capabilities</p>
+            <h2 class="text-3xl sm:text-4xl font-bold mb-12" style={`color: ${c.surfaceLight};`} data-i18n="skills.title">Tools</h2>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Languages -->
             <div class="reveal stagger-1">
-              <h3 class="font-accent text-sm font-semibold uppercase tracking-wide mb-4" style={`color: ${c.accent};`}>Languages</h3>
+              <h3 class="font-accent text-sm font-semibold uppercase tracking-wide mb-4" style={`color: ${c.accent};`} data-i18n="skills.languages">Languages</h3>
               <div class="space-y-3">
                 {siteConfig.skills.languages.map((lang) => (
                   <div class="flex items-center justify-between p-3 rounded-xl border" style={`background: ${c.primary}; border-color: ${c.primaryLight};`}>
@@ -377,7 +386,7 @@ const base = import.meta.env.BASE_URL;
 
             <!-- Technical -->
             <div class="reveal stagger-2">
-              <h3 class="font-accent text-sm font-semibold uppercase tracking-wide mb-4" style={`color: ${c.accent};`}>Technical</h3>
+              <h3 class="font-accent text-sm font-semibold uppercase tracking-wide mb-4" style={`color: ${c.accent};`} data-i18n="skills.technical">Technical</h3>
               <div class="flex flex-wrap gap-2">
                 {siteConfig.skills.technical.map((skill) => (
                   <span class="skill-hover text-xs px-3 py-2 rounded-lg border" style={`background: ${c.primary}; border-color: ${c.primaryLight}; color: ${c.surfaceLight}cc;`}>{skill}</span>
@@ -387,7 +396,7 @@ const base = import.meta.env.BASE_URL;
 
             <!-- Professional -->
             <div class="reveal stagger-3">
-              <h3 class="font-accent text-sm font-semibold uppercase tracking-wide mb-4" style={`color: ${c.accent};`}>Professional</h3>
+              <h3 class="font-accent text-sm font-semibold uppercase tracking-wide mb-4" style={`color: ${c.accent};`} data-i18n="skills.professional">Professional</h3>
               <div class="flex flex-wrap gap-2">
                 {siteConfig.skills.professional.map((skill) => (
                   <span class="skill-hover text-xs px-3 py-2 rounded-lg border" style={`background: ${c.primary}; border-color: ${c.primaryLight}; color: ${c.surfaceLight}cc;`}>{skill}</span>
@@ -398,7 +407,7 @@ const base = import.meta.env.BASE_URL;
 
           <!-- Personal Interests -->
           <div class="reveal stagger-4 mt-12 text-center">
-            <h3 class="font-accent text-sm font-semibold uppercase tracking-wide mb-4" style={`color: ${c.accent};`}>Beyond Business</h3>
+            <h3 class="font-accent text-sm font-semibold uppercase tracking-wide mb-4" style={`color: ${c.accent};`} data-i18n="skills.interests">Beyond Business</h3>
             <div class="flex flex-wrap justify-center gap-4">
               {siteConfig.skills.interests.map((interest) => (
                 <span class="text-sm px-4 py-2 rounded-full border" style={`border-color: ${c.primaryLight}; color: ${c.surfaceLight}aa;`}>
@@ -416,15 +425,15 @@ const base = import.meta.env.BASE_URL;
       <section id="contact" class="py-20 md:py-28 px-6 sm:px-12 md:px-16 lg:px-24" style={`background: ${c.primaryDark};`}>
         <div class="max-w-3xl mx-auto text-center">
           <div class="reveal">
-            <p class="font-accent text-sm tracking-[0.2em] uppercase mb-3" style={`color: ${c.accent};`}>Get in Touch</p>
-            <h2 class="text-3xl sm:text-4xl font-bold mb-4" style={`color: ${c.surfaceLight};`}>Let's Connect</h2>
-            <p class="text-lg mb-10" style={`color: ${c.surfaceLight}aa;`}>Open to opportunities in International Business, Consulting & Strategy across Europe and Asia.</p>
+            <p class="font-accent text-sm tracking-[0.2em] uppercase mb-3" style={`color: ${c.accent};`} data-i18n="contact.label">Get In Touch</p>
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4" style={`color: ${c.surfaceLight};`} data-i18n="contact.title">Let's Connect</h2>
+            <p class="text-lg mb-10" style={`color: ${c.surfaceLight}aa;`} data-i18n="contact.desc">Open to opportunities in International Business, Consulting & Strategy across Europe and Asia.</p>
           </div>
 
           <div class="reveal stagger-1 flex flex-col sm:flex-row justify-center gap-4">
             <a href={`mailto:${siteConfig.social.email}`} class="btn-hover inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold" style={`background: ${c.accent}; color: ${c.primaryDark};`}>
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><path d="M3 7l9 6 9-6"/></svg>
-              Email Me
+              <span data-i18n="contact.email">Email Me</span>
             </a>
             <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" class="btn-hover inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold border" style={`border-color: ${c.accent}44; color: ${c.accent};`}>
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 1 0-4 0"/><path d="M3 7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7z"/></svg>
@@ -439,7 +448,7 @@ const base = import.meta.env.BASE_URL;
           <div class="reveal stagger-2 mt-8">
             <p class="text-sm" style={`color: ${c.surfaceLight}66;`}>
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-1"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Bremen, Germany
+              <span data-i18n="contact.location">Bremen, Germany</span>
             </p>
           </div>
         </div>
@@ -451,7 +460,7 @@ const base = import.meta.env.BASE_URL;
       <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <p class="text-sm" style={`color: ${c.surfaceLight}66;`}>&copy; 2026 {siteConfig.name}</p>
         <p class="text-xs" style={`color: ${c.surfaceLight}44;`}>
-          Built with <span class="text-red-400">&hearts;</span> by
+          <span data-i18n="footer.built">Made with</span> <span class="text-red-400">&hearts;</span> <span data-i18n="footer.by">by</span>
           <a href="https://cofoundy.dev" target="_blank" rel="noopener noreferrer" class="hover:underline" style={`color: ${c.surfaceLight}66;`}>Cofoundy</a>
         </p>
       </div>
@@ -465,8 +474,51 @@ const base = import.meta.env.BASE_URL;
       <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] rounded-xl object-contain" />
     </div>
 
-    <!-- Scroll Reveal + Floating Header + Modal + Hero Carousel + Lightbox -->
-    <script define:vars={{ leadership: siteConfig.leadership, accentColor: c.accent, surfaceLightColor: c.surfaceLight, primaryLightColor: c.primaryLight, baseUrl: import.meta.env.BASE_URL }}>
+    <!-- Scroll Reveal + Floating Header + Modal + Hero Carousel + Lightbox + i18n -->
+    <script define:vars={{ leadership: siteConfig.leadership, accentColor: c.accent, surfaceLightColor: c.surfaceLight, primaryLightColor: c.primaryLight, baseUrl: import.meta.env.BASE_URL, i18n: translations }}>
+      // ═══════════ i18n LANGUAGE TOGGLE ═══════════
+      let currentLang = localStorage.getItem('lang') || 'en';
+
+      function setLang(lang) {
+        currentLang = lang;
+        localStorage.setItem('lang', lang);
+        document.documentElement.lang = lang;
+
+        const dict = i18n[lang];
+        if (!dict) return;
+
+        // Update all data-i18n elements
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (dict[key]) el.textContent = dict[key];
+        });
+
+        // Update toggle button
+        const flag = document.getElementById('lang-flag');
+        const label = document.getElementById('lang-label');
+        const alt = document.getElementById('lang-alt');
+        if (flag && label && alt) {
+          if (lang === 'en') {
+            flag.textContent = '\u{1F1EC}\u{1F1E7}';
+            label.textContent = 'EN';
+            alt.textContent = 'DE';
+          } else {
+            flag.textContent = '\u{1F1E9}\u{1F1EA}';
+            label.textContent = 'DE';
+            alt.textContent = 'EN';
+          }
+        }
+      }
+
+      // Initialize language on load
+      setLang(currentLang);
+
+      // Toggle button click
+      document.getElementById('lang-toggle')?.addEventListener('click', () => {
+        setLang(currentLang === 'en' ? 'de' : 'en');
+      });
+
+      // ═══════════ SCROLL REVEAL ═══════════
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -528,12 +580,14 @@ const base = import.meta.env.BASE_URL;
         const item = leadership[index];
         if (!item || !modal) return;
 
+        const dict = i18n[currentLang] || {};
+
         document.getElementById('modal-icon').textContent = item.icon;
         document.getElementById('modal-number').textContent = `#${item.number}`;
-        document.getElementById('modal-title').textContent = item.title;
-        document.getElementById('modal-role').textContent = `${item.role} — ${item.org}`;
+        document.getElementById('modal-title').textContent = dict[`lead.${index}.title`] || item.title;
+        document.getElementById('modal-role').textContent = `${dict[`lead.${index}.role`] || item.role} — ${item.org}`;
         document.getElementById('modal-period').textContent = item.period;
-        document.getElementById('modal-details').textContent = item.details || item.description;
+        document.getElementById('modal-details').textContent = dict[`lead.${index}.details`] || item.details || item.description;
 
         // Skills
         const skillsContainer = document.getElementById('modal-skills');
